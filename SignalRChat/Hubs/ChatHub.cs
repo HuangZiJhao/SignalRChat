@@ -12,8 +12,6 @@ namespace SignalRChat.Hubs
         private readonly static ConnectionMapping<string> UserList =
              new ConnectionMapping<string>();
 
-        public static List<string> UsersList = new List<string>();
-
         public override Task OnConnectedAsync()
         {
             return base.OnConnectedAsync();
@@ -23,21 +21,20 @@ namespace SignalRChat.Hubs
         {
             string message = " 歡迎使用者 " + name + " 加入聊天室 ";
             UserList.Add(name,Context.ConnectionId);
-            UsersList.Add(name);
-            List<string> Users = UpdateUsersList();
+            List<string> UsersList = UpdatesersList();
             Clients.All.SendAsync("GetConnectedUsers", UsersList);
 
             SendMessage(message);
         }
 
-        public List<string> UpdateUsersList() {
+        public List<string> UpdatesersList() {
             return UserList.GetUsers();
         }
 
         public async Task SendMessage(string message)
         {
             var Users = UserList.GetConnection("Leo");
-            await Clients.All.SendAsync("ReceiveMessage","Leo", message);
+            await Clients.Others.SendAsync("ReceiveMessage","Leo", message);
         }
         public override Task OnDisconnectedAsync(Exception? exception)
         {

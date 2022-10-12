@@ -1,35 +1,82 @@
 ﻿@page
-<div class="container" style="float: left; width: 50%;">
-    <div class="row">&nbsp;</div>
-    <div class="row">
-        <div class="col-2">User</div>
-        <div class="col-4"><input type="text" id="userInput" /></div>
+<h3 class=" text-center">Messaging</h3>
+<div class="messaging">
+    <div class="inbox_msg">
+        <div class="inbox_people">
+            <div class="headind_srch">
+                <div class="recent_heading">
+                    <h4>Recent</h4>
+                </div>
+                <div class="srch_bar">
+                    <div class="stylish-input-group">
+                        <input type="text" class="search-bar" placeholder="Search">
+                        <span class="input-group-addon">
+                            <button type="button"> <i class="fa fa-search" aria-hidden="true"></i> </button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div id="usersList" class="inbox_chat">
+                
+            </div>
+        </div>
+        <div class="mesgs">
+            <div id="messagesList" class="msg_history">
+
+            </div>
+            <div class="type_msg">
+                <div class="input_msg_write">
+                    <input id="messageInput" type="text" class="write_msg" placeholder="Type a message" />
+                    <button id="sendButton" class="msg_send_btn" type="button"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="row">
-        <div class="col-2">Message</div>
-        <div class="col-4"><input type="text" id="messageInput" /></div>
-    </div>
-    <div class="row">&nbsp;</div>
-    <div class="row">
-        <div class="col-6">
-            <input type="button" id="sendButton" value="Send Message" />
+
+
+    <p class="text-center top_spac"> Design by <a target="_blank" href="https://www.linkedin.com/in/sunil-rajput-nattho-singh/">Sunil Rajput</a></p>
+
+</div></div>
+
+<div id="userTemplate" class="template">
+    <div id="userMain" class="chat_list">
+        <!-- active_chat -->
+        <div class="chat_people">
+            <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+            <div class="chat_ib">
+                <h5><p id="userName"><!--user--> </p> <span id="time" class="chat_date"><!--time--></span></h5>
+                <p>
+
+                </p>
+            </div>
         </div>
     </div>
 </div>
-<div style=" height: 300px; width: 300px; float: left; border:1px solid">
-    <div class="col-6">
-        <ul id="UserList"></ul>
+
+<div id="chatIncomingTemplate" class="template">
+    <div id="message" class="incoming_msg">
+        <div class="incoming_msg_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+        <div class="received_msg">
+            <div class="received_withd_msg">
+                <p id="content">
+                    <!--content-->
+                </p>
+                <span id="time" class="time_date"> <!--time--> </span>
+            </div>
+        </div>
     </div>
 </div>
-<div class="row">
-    <div class="col-12">
-        <hr />
+<div id="chatOutcomingTemplate" class="template">
+    <div id="message" class="outgoing_msg">
+        <div class="sent_msg">
+            <p id="content">
+                輸出
+            </p>
+            <span id="time" class="time_date"> //時間 </span>
+        </div>
     </div>
 </div>
-<div class="row">
-    <div class="col-6">
-        <ul id="messagesList"></ul>
-    </div>
-</div>
+
+<link rel=stylesheet type="text/css" href="~/css/chat.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/6.0.1/signalr.js"></script>
 <script src="~/js/chat.js"></script>
